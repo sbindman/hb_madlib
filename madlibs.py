@@ -15,7 +15,7 @@ def start_here():
 @app.route('/hello')
 def say_hello():
     return render_template("hello.html")
-
+# This gets called in the HTML tag for the submit button on hello.html
 @app.route('/greet')
 def greet_person():
     player = request.args.get("person")
