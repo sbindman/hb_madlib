@@ -49,7 +49,7 @@ def show_madlib():
     color = request.args.get("fave_color")
     noun = request.args.get("noun")
     adjective = request.args.get("adjective")
-
+# TODO would be cool to change the bg-color based on which color the person chooses for the madlib
     return render_template("madlib.html", person=person, color=color, noun=noun, adjective=adjective)
 
 

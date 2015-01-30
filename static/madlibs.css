@@ -1,0 +1,23 @@
+
+
+h1 {
+    font-family: fantasy;
+}
+
+body {
+    background-color: #006666;
+}
+
+.centered-on-page {
+    text-align: center;
+}
+
+.fancy {
+    color: #FF9900;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+}

@@ -2,15 +2,16 @@
 <html>
 <head>
   <title>A Compliment</title>
+  <link rel="stylesheet" href="../static/madlibs.css">
 </head>
-<body>
-    Hi {{ person }}! I think you're {{ compliment }}!
+<body class="centered-on-page">
+    <h1 class="fancy">Hi {{ person }}! I think you're {{ compliment }}!</h1>
     <br>
     <br>
     <p>Would you like to play a game?</p>
     <form action="/game">
         <label for="radio1"></label>
-        <input type="radio" name="play_choice" value="true"> Yes!!
+        <input type="radio" name="play_choice" value="true" > Yes!!
         <input type="radio" name="play_choice" value="false"> No, I hate fun.
         <br>
         <br>
