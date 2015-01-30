@@ -6,19 +6,24 @@ from flask import Flask, render_template, request
 # to know this to know what any imported things are relative to.
 app = Flask(__name__)
 
+# user_name = "this is not a name"
+
 # route to handle the landing page of a website.
 @app.route('/')
 def start_here():
     return "Hi! This is the home page."
 
 # route to display a simple web page
-@app.route('/hello')
+@app.route('/home')
 def say_hello():
     return render_template("hello.html")
 # This gets called in the HTML tag for the submit button on hello.html
+
+
+
 @app.route('/greet')
 def greet_person():
-    player = request.args.get("person")
+    user_name = request.args.get("person")
 
     AWESOMENESS = [
         'awesome', 'terrific', 'fantastic', 'neato', 'fantabulous', 'wowza', 'oh-so-not-meh',
@@ -26,7 +31,26 @@ def greet_person():
 
     compliment = choice(AWESOMENESS)
 
-    return render_template("compliment.html", person=player, compliment=compliment)
+    return render_template("compliment.html", person=user_name, compliment=compliment)
+
+
+@app.route('/game')
+def show_game_form():
+    user_choice = request.args.get("play_choice")
+
+    if user_choice == "false":
+        return render_template("goodbye.html")
+    else:
+        return render_template("game.html")
+        
+@app.route('/madlib')
+def show_madlib():
+    person = request.args.get("person")
+    color = request.args.get("fave_color")
+    noun = request.args.get("noun")
+    adjective = request.args.get("adjective")
+
+    return render_template("madlib.html", person=person, color=color, noun=noun, adjective=adjective)
 
 
 if __name__ == '__main__':
