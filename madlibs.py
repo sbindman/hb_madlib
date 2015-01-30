@@ -43,14 +43,24 @@ def show_game_form():
     else:
         return render_template("game.html")
         
-@app.route('/madlib')
+
+@app.route('/madlib', methods=['POST'])
 def show_madlib():
-    person = request.args.get("person")
-    color = request.args.get("fave_color")
-    noun = request.args.get("noun")
-    adjective = request.args.get("adjective")
+# Need to look up ways of specifying the HTTP method type
+    print request
+    person = request.form("person")
+    color = request.form("fave_color")
+    noun = request.form("noun")
+    adjective = request.form("adjective")
+    swallow_type = request.form("swallow_type")
+    verb = request.form("verb")
+
+    POSSIBLE_TEMPLATES = ["madlib.html", "madlib1.html", "madlib2.html", "madlib3.html"]
+    template_to_load = choice(POSSIBLE_TEMPLATES)
+
 # TODO would be cool to change the bg-color based on which color the person chooses for the madlib
-    return render_template("madlib.html", person=person, color=color, noun=noun, adjective=adjective)
+    return render_template(template_to_load, person=person, color=color, noun=noun, adjective=adjective, swallow_type=swallow_type, verb=verb)
+
 
 
 if __name__ == '__main__':
