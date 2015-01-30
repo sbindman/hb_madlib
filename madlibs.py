@@ -44,16 +44,14 @@ def show_game_form():
         return render_template("game.html")
         
 
-@app.route('/madlib', methods=['POST'])
+@app.route('/madlib')
 def show_madlib():
-# Need to look up ways of specifying the HTTP method type
-    print request
-    person = request.form("person")
-    color = request.form("fave_color")
-    noun = request.form("noun")
-    adjective = request.form("adjective")
-    swallow_type = request.form("swallow_type")
-    verb = request.form("verb")
+    person = request.args.get("person")
+    color = request.args.get("fave_color")
+    noun = request.args.get("noun")
+    adjective = request.args.get("adjective")
+    swallow_type = request.args.get("swallow_type")
+    verb = request.args.get("verb")
 
     POSSIBLE_TEMPLATES = ["madlib.html", "madlib1.html", "madlib2.html", "madlib3.html"]
     template_to_load = choice(POSSIBLE_TEMPLATES)
